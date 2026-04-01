@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SQLクエスト - データベース・デテクティブ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ========== ローディング画面 ========== -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-icon">🔍</div>
+            <h1>SQL QUEST</h1>
+            <p>データベース・デテクティブ</p>
+            <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+            <p class="loading-text">初期化中...</p>
+        </div>
+    </div>
+
+    <!-- ========== エピソード選択画面 ========== -->
+    <div id="episode-select" class="hidden">
+        <header class="select-header">
+            <h1 class="select-title">SQL QUEST</h1>
+            <p class="select-subtitle">データベース・デテクティブ</p>
+        </header>
+        <div id="episode-list" class="episode-list"></div>
+    </div>
+
+    <!-- ========== メインゲーム画面 ========== -->
+    <div id="game-screen" class="hidden">
+        <!-- ヘッダー -->
+        <header id="game-header">
+            <div class="header-left">
+                <button id="back-btn" title="戻る">◀</button>
+                <span class="episode-badge" id="ep-badge">EP.1</span>
+                <span class="episode-title" id="ep-title"></span>
+            </div>
+            <div class="header-right">
+                <span id="mission-counter">Mission 1/3</span>
+            </div>
+        </header>
+
+        <!-- ストーリーエリア -->
+        <section id="story-area">
+            <div id="story-portrait">👤</div>
+            <div id="story-bubble">
+                <p id="story-text"></p>
+            </div>
+        </section>
+
+        <!-- ミッション指示 -->
+        <section id="mission-area">
+            <div id="mission-icon">📋</div>
+            <p id="mission-text"></p>
+        </section>
+
+        <!-- 結果テーブル表示エリア -->
+        <section id="result-area" class="hidden">
+            <div id="result-header">
+                <span id="result-status"></span>
+                <span id="result-rows"></span>
+            </div>
+            <div id="result-table-wrapper">
+                <table id="result-table"></table>
+            </div>
+            <div id="result-message" class="hidden"></div>
+        </section>
+
+        <!-- クエリプレビュー -->
+        <section id="query-preview">
+            <div id="query-display">
+                <span class="query-placeholder">チップを選択してクエリを組み立てよう</span>
+            </div>
+            <button id="clear-btn" class="hidden" title="クリア">✕</button>
+        </section>
+
+        <!-- クエリビルダ（チップ選択エリア） -->
+        <section id="query-builder">
+            <div id="chip-container"></div>
+        </section>
+
+        <!-- アクションボタン -->
+        <section id="action-bar">
+            <button id="run-btn" disabled>
+                <span class="btn-icon">▶</span>
+                <span>実行</span>
+            </button>
+            <button id="hint-btn">
+                <span class="btn-icon">💡</span>
+                <span>ヒント</span>
+            </button>
+            <button id="next-btn" class="hidden">
+                <span class="btn-icon">➡</span>
+                <span>次のミッション</span>
+            </button>
+        </section>
+    </div>
+
+    <!-- ========== クリア画面 ========== -->
+    <div id="clear-screen" class="hidden">
+        <div class="clear-content">
+            <div class="clear-icon">🎉</div>
+            <h1>CASE CLOSED</h1>
+            <p class="clear-subtitle" id="clear-subtitle"></p>
+            <div id="clear-summary"></div>
+            <div class="clear-buttons">
+                <button id="replay-btn">もう一度プレイ</button>
+                <button id="to-select-btn">エピソード選択へ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- sql.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+    <script src="js/episodes.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
